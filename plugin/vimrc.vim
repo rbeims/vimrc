@@ -23,8 +23,8 @@ if has('syntax')
   syntax enable
 endif
 
-" Autoindent when starting new line, or using `o` or `O`.
-set autoindent
+" Smart indenting
+set smartindent
 
 " Allow backspace in insert mode.
 set backspace=indent,eol,start
@@ -48,8 +48,8 @@ set ttimeoutlen=100
 set incsearch
 
 " Indent using two spaces.
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " Use `Ctrl-L` to clear the highlighting of :set hlsearch.
@@ -204,7 +204,7 @@ set foldnestmax=3
 set nofoldenable
 
 " Enable mouse for scrolling and window resizing.
-set mouse=a
+set mouse=r
 
 " Disable swap to prevent annoying messages.
 set noswapfile
@@ -226,7 +226,7 @@ set noshowmode
 set smartcase
 
 " Use dash as word separator.
-set iskeyword+=-
+"set iskeyword+=-
 
 " Add gems.tags to files searched for tags.
 set tags+=gems.tags
@@ -331,3 +331,16 @@ vmap <Leader>P "+P
 " Enable syntax
 syntax on
 
+" Grep word under cursor
+:nnoremap gr :grep <cword> `cat cscope.files`<CR>
+:nnoremap Gr :grep -r <cword> %:p:h/*<CR>
+:nnoremap gR :grep -r '\b<cword>\b' *<CR>
+:nnoremap GR :grep -r '\b<cword>\b' %:p:h/*<CR>
+
+"set guifont=Hack\ 11
+set guifont=Cousine\ for\ Powerline\ 11 
+set guioptions -=T
+
+:iab <expr> nl! strftime("%FT%T%z")
+
+:au BufNewFile *.note r ~/.vim/skeleton.note |set syntax=markdown
