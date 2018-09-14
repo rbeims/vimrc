@@ -338,8 +338,8 @@ syntax on
 :nnoremap GR :grep -r '\b<cword>\b' %:p:h/*<CR>
 
 "set guifont=Hack\ 11
-set guifont=Cousine\ for\ Powerline\ 11 
-set guioptions -=T
+set guifont=Cousine\ for\ Powerline\ 16
+"set guioptions -=T
 
 :iab <expr> nl! strftime("%FT%T%z")
 
