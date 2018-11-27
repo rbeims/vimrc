@@ -50,7 +50,7 @@ set incsearch
 " Indent using two spaces.
 set tabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
 
 " Use `Ctrl-L` to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
@@ -344,3 +344,10 @@ set guifont=Cousine\ for\ Powerline\ 16
 :iab <expr> nl! strftime("%FT%T%z")
 
 :au BufNewFile *.note r ~/.vim/skeleton.note |set syntax=markdown
+
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://sunaku.github.io/vim-256color-bce.html
+    set t_ut=
+endif
